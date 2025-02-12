@@ -194,6 +194,7 @@ export default ChildComponent;
 */
 
 // ? ========= prop types ==============
+/*
 import PropTypes from "prop-types";
 
 let ChildComponent = props => {
@@ -224,3 +225,8 @@ ChildComponent.propTypes = {
 };
 
 export default ChildComponent;
+*/
+
+
+// ?====================Inline Css===================
+

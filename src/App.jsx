@@ -456,7 +456,6 @@ let App = () => {
 export default App;
 */
 
-
 // ?============props drilling==============
 /*
 It is a process of passing props from one component to another component to another component and so on.
@@ -729,8 +728,8 @@ let App = () => {
 export default App;
 */
 
-
 // ?==============PROPS TYPE =======================
+/*
 import ChildComponent from "./ChildComponent";
 let App = () => {
   return (
@@ -751,4 +750,116 @@ let App = () => {
     </>
   );
 };
+export default App;
+*/
+// ?================Inlinestyle====================
+/*
+let App = () => {
+  return (
+    <>
+      <h1 style={{ textAlign: "center" }}>I am App Component using Inline CSS</h1>
+      <section
+        style={{
+          marginTop: "20px",
+          display: "flex",
+          justifyContent: "space-around",
+        }}
+      >
+        <div
+          style={{
+            flex: 1,
+            textAlign: "center",
+            border: "1px solid white",
+            backgroundColor: "gray",
+            padding:"10px"
+          }}
+        >
+          Home
+        </div>
+        <div
+          style={{
+            flex: 1,
+            textAlign: "center",
+            border: "1px solid white",
+            backgroundColor: "gray",
+            padding:"10px"
+          }}
+        >
+          About
+        </div>
+        <div
+          style={{
+            flex: 1,
+            textAlign: "center",
+            border: "1px solid white",
+            backgroundColor: "gray",
+            padding:"10px"
+          }}
+        >
+          Contact
+        </div>
+        <div
+          style={{
+            flex: 1,
+            textAlign: "center",
+            border: "1px solid white",
+            backgroundColor: "gray",
+            padding:"10px"
+          }}
+        >
+          Service
+        </div>
+        <div
+          style={{
+            flex: 1,
+            textAlign: "center",
+            border: "1px solid white",
+            backgroundColor: "gray",
+            padding:"10px"
+          }}
+        >
+          Login
+        </div>
+      </section>
+    </>
+  );
+};
+export default App;
+*/
+// ?===============Module CSS==========
+/*
+import vn from './app.module.css'
+let App=()=>{
+  return(
+    <>
+    <h1>I am App Component using Module CSS</h1>
+    <section id={vn.container}>
+      <div className={vn.item}>Home</div>
+      <div className={vn.item}>About</div>
+      <div className={vn.item}>Contact</div>
+      <div className={vn.item}>Service</div>
+      <div className={vn.item}>Login</div>
+    </section>
+    </>
+  )
+}
+export default App;
+
+*/
+// ?=============Global CSS===============
+
+let App=()=>{
+  return(
+    <>
+    <h1>I am App Component using Global CSS</h1>
+    <section id="container">
+      <div className="item">Home</div>
+      <div className="item">About</div>
+      <div className="item">Contact</div>
+      <div className="item">Service</div>
+      <div className="item">Login</div>
+    </section>
+    </>
+  )
+}
 export default App;
