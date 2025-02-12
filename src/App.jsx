@@ -463,7 +463,7 @@ It is a process of passing props from one component to another component to anot
 OR
 It is a process of sharing b/w the components through multiple levels
 */
-
+/*
 import ChildComponent from "./ChildComponent";
 let App = () => {
   let myData="https://chat.qspiders.com/student-dashboard";
@@ -726,4 +726,29 @@ let App = () => {
   )
 }
 
+export default App;
+*/
+
+
+// ?==============PROPS TYPE =======================
+import ChildComponent from "./ChildComponent";
+let App = () => {
+  return (
+    <>
+      <h1>I am App Component</h1>
+      <ChildComponent
+        sname={785}
+        age={20}
+        course="MERN stack"
+        skills={["hello","world"]}
+        address={{
+          streetno: 123,
+          colony: "patel nagar",
+          pincode: 123456,
+        }}
+        isMarried={false}
+      />
+    </>
+  );
+};
 export default App;

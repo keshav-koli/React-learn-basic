@@ -169,6 +169,7 @@ export default ChildComponent;
 */
 
 // ?============props drilling===================
+/*
 import GrandChildComponent from "./GrandChildComponent";
 let ChildComponent = (props) => {
   console.log(props);
@@ -190,3 +191,36 @@ let ChildComponent = (props) => {
 };
 
 export default ChildComponent;  
+*/
+
+// ? ========= prop types ==============
+import PropTypes from "prop-types";
+
+let ChildComponent = props => {
+  console.log(props);
+  let { sname, course, skills } = props;
+  return (
+    <>
+      <h2>I am ChildComponent </h2>
+      <h3>Name : {sname}</h3>
+      <h3>Course : {course}</h3>
+      <h3>
+        Skills :
+        {skills.map((val, ind) => {
+          return <li key={ind}>{val}</li>;
+        })}
+      </h3>
+    </>
+  );
+};
+
+ChildComponent.propTypes = {
+  sname: PropTypes.string,
+  age: PropTypes.number,
+  course: PropTypes.string,
+  skills: PropTypes.array,
+  address: PropTypes.object,
+  isMarried: PropTypes.bool,
+};
+
+export default ChildComponent;
