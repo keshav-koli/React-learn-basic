@@ -865,8 +865,8 @@ let App=()=>{
 export default App;
 */
 
-
 // ?================Meesho Project===============
+/*
 import Product from './ChildComponent';
 import assestsData from "./assets/Assets";
 let App=()=>{
@@ -897,3 +897,214 @@ let App=()=>{
   )
 }
 export default App;
+*/
+
+// !==================useState() hook ===========================
+/*
+It is a inbuilt hook provided by react JS
+It helps us to create dynamic data in a component
+It helps to do the state management in a component
+
+Syntax : let [variable,updateFunction]=useState(initialValue);
+
+*/
+/*
+import { useState } from "react";
+
+let App = () => {
+  let newcount=0//static data
+  let [count, setCount] = useState(0);
+  console.log(count);
+
+  return (
+    <>
+      <h1>I am App component</h1>
+      <h3>Count : {count}</h3>
+
+      <button onClick={() => setCount(10)}>update to 10</button>
+      <button onClick={() => setCount(20)}>update to 20</button>
+      <br />
+      <br />
+      <button onClick={() => setCount(count - 1)}>Decrement</button>
+      <button onClick={() => setCount(count + 1)}>Increment</button>
+      <button onClick={() => setCount(0)}>reset</button>
+
+
+      <button
+        onClick={() => {
+          newcount = newcount + 1;
+          console.log(newcount);
+          
+        }}
+      >
+        update
+      </button>
+    </>
+  );
+};
+export default App;
+*/
+
+// ?Example 1.1 : on Numbers
+/*
+import { useState } from "react";
+
+let App=()=>{
+  let [a,b]=useState(0);
+  return (
+    <>
+    <h1>I am App Commponent</h1>
+    <h3>Count :{a}</h3>
+    <button onClick={() => b(1)}>update to 10</button>
+    </>
+
+
+  )
+}
+export default App;
+*/
+
+// ?Example 1.2 : on Numbers
+/*
+import { useState } from "react";
+
+let App = () => {
+  let [count1, setCount1] = useState(0);
+  let [count2, setCount2] = useState(0);
+  return (
+    <>
+      <h1>I am App Commponent</h1>
+      <h3>Count :{count1}</h3>
+      <button onClick={() => setCount1(count1 + 1)}>Increment by 1</button>
+      <button onClick={() => setCount1(0)}>reset</button>
+      <button onClick={() => setCount1(count1 - 1)}>Decrement by 1</button>
+      <br />
+      <br />
+      <h3>Count :{count2}</h3>
+      <button onClick={() => setCount1(count2 + 5)}>Increment by 5 </button>
+      <button onClick={() => setCount1(0)}>reset</button>
+      <button onClick={() => setCount1(count2 - 5)}>Decrement by 5</button>
+    </>
+  );
+};
+export default App;
+*/
+
+
+// ?Example 2 : on String
+/*
+import {useState} from 'react'
+
+const App = () => {
+  let [name,setName]=useState("MSD")
+  return (
+    <div>
+      <h1>I am App component</h1>
+      <h2>name :{name}</h2>
+      <button onClick={()=>setName("Mahinder")}>Half Name</button>
+      <button onClick={()=>setName("Mahinder singh Dhoni")}>full Name</button>
+    </div>
+  )
+}
+
+export default App;
+*/
+// ?Example 3 : on Boolean
+/*
+import { useState } from 'react';
+
+ const App = () => {
+  let [gender,setGender]=useState(false)
+  return (
+    <div>
+      <h1>I am App Component</h1>
+      <h3>Gender : {gender?"male":"female"}</h3>
+      <button onClick={()=>setGender(true)}>Male</button>
+      <button onClick={()=>setGender(false)}>Female</button>
+
+
+    </div>
+  )
+}
+
+export default App;
+*/
+
+// ?Example 4 : on Array
+/*
+import { useState } from "react";
+
+const App=()=>{
+  let [skills,setSkiils]=useState(["html","css","javascript"])
+  return(
+    <>
+    <h1>I am App component</h1>
+    <button onClick={()=>{ setSkiils(["python" ,"MongoDB","Django"])}}>python</button>
+    <button onClick={()=>{ setSkiils(["Java" ,"Hibernate","Spring"])}}>Java</button>
+    <button onClick={()=>{ setSkiils(["html","css","javascript","React Js" ,"Node js"])}}>Mern</button>
+
+    <h3>Skills: {skills.map((val)=> {  
+    return <li>{val}</li>})
+    }
+    </h3>
+    </>
+  )
+}
+
+export default App;
+*/
+
+// ?Example 4.2 : on Array
+/*
+import { useState } from "react";
+let python=["python" ,"MongoDB","Django"];
+let java=["Java" ,"Hibernate","Spring"];
+let mern=["React Js" ,"Node js" ,"Next js"];
+let defaultSkills=["html","css","javascript"];
+const App=()=>{
+  let [skills,setSkiils]=useState(defaultSkills)
+  return(
+    <>
+    <h1>I am App component</h1>
+    <button onClick={()=>{ setSkiils(python)}}>python</button>
+    <button onClick={()=>{ setSkiils(java)}}>Java</button>
+    <button onClick={()=>{ setSkiils(mern)}}>Mern</button>
+
+    <h3>Skills: {skills.map((val,index)=> {  
+    return <li key={index}>{val}</li>})
+    }
+    </h3>
+    </>
+  )
+}
+
+export default App;
+*/
+
+// ? Example 5 : Objects
+/*
+import { useState } from "react";
+let App=()=>{
+let student1={sname:"amit",age:20,course:"Mern"};
+  let student2={sname:"shubham",age:21,course:"python"};
+  let student3={sname:"nazme",age:22,course:"java"};
+  let student4={sname:"prabal",age:23,course:"java"};
+  let [state,setState]=useState(student1);
+  return(
+  <>
+  <h1>I am App Component</h1>
+  <button onClick={()=>setState(student1)}>student 1</button>
+  <button onClick={()=>setState(student2)}>student 2</button>
+  <button onClick={()=>setState(student3)}>student 3</button>
+  <button onClick={()=>setState(student4)}>student 4</button>
+  <br/>
+  <h2>Name :{state.sname}</h2>
+  <h2>Name :{state.age}</h2>
+  <h2>Name :{state.course}</h2>
+  </>
+  )
+}
+export default App; 
+*/
+
+

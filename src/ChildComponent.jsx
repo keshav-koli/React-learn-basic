@@ -231,6 +231,7 @@ export default ChildComponent;
 // ?====================Inline Css===================
 
 // !===============Meesho Project================
+/*
 import meeshoStyle from "../meeshoTask.module.css";
 
 let Product = (props) => {
@@ -262,3 +263,4 @@ let Product = (props) => {
   );
 }
 export default Product;
+*/
