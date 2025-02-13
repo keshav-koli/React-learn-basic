@@ -230,3 +230,35 @@ export default ChildComponent;
 
 // ?====================Inline Css===================
 
+// !===============Meesho Project================
+import meeshoStyle from "../meeshoTask.module.css";
+
+let Product = (props) => {
+  let {data,category}=props;
+  console.log(category);
+  console.log(data);
+  
+  return (
+    <>
+      <h3>Category : {category}</h3>
+      <section id={meeshoStyle.container}>
+      {data.map((val, ind) => {
+        return (
+          <div key={ind} className={meeshoStyle.item}>
+            <div id={meeshoStyle.imgContainer}>
+            <img src={val.image} alt="product" />
+            </div>
+            <div id={meeshoStyle.content}>
+            <h3>{val.title}</h3>
+            <p>Price : {val.price}</p>
+            <p>Ratings : {val.ratings}</p>
+            <p>Reviews : {val.reviews}</p>
+            </div>
+          </div>
+        );
+      })}
+      </section>
+    </>
+  );
+}
+export default Product;

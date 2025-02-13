@@ -847,7 +847,7 @@ export default App;
 
 */
 // ?=============Global CSS===============
-
+/*
 let App=()=>{
   return(
     <>
@@ -859,6 +859,40 @@ let App=()=>{
       <div className="item">Service</div>
       <div className="item">Login</div>
     </section>
+    </>
+  )
+}
+export default App;
+*/
+
+
+// ?================Meesho Project===============
+import Product from './ChildComponent';
+import assestsData from "./assets/Assets";
+let App=()=>{
+  return(
+    <>
+    <h1>Meesho Project</h1>
+    <Product
+        category="Men's Collection"
+        data={assestsData.meeshoTask.menData}
+      />
+      <Product
+        category="Women's Collection"
+        data={assestsData.meeshoTask.womenData}
+      />
+      <Product
+        category="Kid's Collection"
+        data={assestsData.meeshoTask.kidData}
+      />
+      <Product
+        category="Footwear's Collection"
+        data={assestsData.meeshoTask.footwearData}
+      />
+      <Product
+        category="Watch's Collection"
+        data={assestsData.meeshoTask.watchData}
+      />
     </>
   )
 }
