@@ -1107,4 +1107,76 @@ let student1={sname:"amit",age:20,course:"Mern"};
 export default App; 
 */
 
+// !==================FakeStoreApi=================================
+import assestsData from "./assets/Assets";
+import { useState } from "react";
+import ChildComponent from "./ChildComponent";
+import style from "../fakeStoreTask.module.css";
+let App=()=>{
+  let products=assestsData.fakeStoreTask.products;
 
+  let [data,setData]=useState(products);
+  console.log(data);
+  
+  function handleAllData(){
+    setData(products);
+  }
+
+  function handleMensClothing (){
+    let filteredMen=[];
+    products.map((val)=>{
+      if(val.category==="men's clothing"){
+        filteredMen.push(val)
+      }
+    });
+    setData(filteredMen)
+  };
+
+  let handleWomens = () => {
+    let filterWomens = [];
+
+    products.map((val, ind) => {
+      if (val.category === "women's clothing") {
+        filterWomens.push(val);
+      }
+    });
+
+    setData(filterWomens);
+  };
+
+  let handlejewelery = () => {
+    let filterJewellery = [];
+    products.map((val, ind) => {
+      if (val.category === "jewelery") {
+        filterJewellery.push(val);
+      }
+    });
+    setData(filterJewellery);
+  };
+
+  let handleElectronics = () => {
+    let filterElectronics = [];
+    products.map((val, ind) => {
+      if (val.category === "electronics") {
+        filterElectronics.push(val);
+      }
+    });
+    setData(filterElectronics);
+  };
+
+
+  return (
+    <div id={style.whole_container}>
+    <h1>FakeStore Api</h1>
+        <div id={style.category_button}>
+          <button onClick={handleAllData} className={style.category_btn_style}>All Item</button>
+          <button className={style.category_btn_style} onClick={handleMensClothing}>men's clothing</button>
+          <button className={style.category_btn_style} onClick={handleWomens}>women's clothing</button>
+          <button className={style.category_btn_style} onClick={handlejewelery}>jewelery</button>
+          <button className={style.category_btn_style} onClick={handleElectronics}>electronics</button>
+        </div>
+    <ChildComponent product={data}/>
+    </div>
+  )
+}
+export default App;

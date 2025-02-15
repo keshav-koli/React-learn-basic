@@ -227,7 +227,6 @@ ChildComponent.propTypes = {
 export default ChildComponent;
 */
 
-
 // ?====================Inline Css===================
 
 // !===============Meesho Project================
@@ -264,3 +263,34 @@ let Product = (props) => {
 }
 export default Product;
 */
+
+// !=============Fetch API task===================
+import React from "react";
+import style from "../fakeStoreTask.module.css";
+const ChildComponent = ({ product }) => {
+  return (
+    <div id={style.container}>
+      {product.map((val) => {
+        // console.log(val);
+        return (
+          <div key={val.id} className={style.card}>
+            <div id={style.image}>
+              <img src={val.image} alt="product" />
+            </div>
+            <div id={style.content}>
+              <h3 className={style.content_details}>{val.title}</h3>
+              <p className={style.content_details}>${val.price}</p>
+              <p className={style.content_details}>{val.category}</p>
+              <span className={style.content_details}>
+                {val.rating.rate} ⭐{" "}
+              </span>
+              <button id={style.btn}>Add to cart</button>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+};
+
+export default ChildComponent;
