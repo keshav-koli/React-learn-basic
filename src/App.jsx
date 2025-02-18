@@ -1183,6 +1183,7 @@ export default App;
 */
 
 // !=========Context api============
+/*
 
 import { createContext } from "react";
 import ChildComponentA from "./ChildComponentA";
@@ -1196,11 +1197,25 @@ const App = () => {
   return (
     <div>
       I am app component
-      {/* {Step 2 } */}
+     
       <MyContext.Provider value={data}>
         <ChildComponentA />
       </MyContext.Provider>
     </div>
   );
 };
+export default App;
+*/
+
+import React from "react";
+import QspiderComponent from "./ContextApi_task/QspiderComponent";
+let App = () => {
+  return (
+    <div>
+      <h1>I am App component</h1>
+      <QspiderComponent />
+    </div>
+  );
+};
+
 export default App;
