@@ -990,7 +990,6 @@ let App = () => {
 export default App;
 */
 
-
 // ?Example 2 : on String
 /*
 import {useState} from 'react'
@@ -1108,6 +1107,7 @@ export default App;
 */
 
 // !==================FakeStoreApi=================================
+/*
 import assestsData from "./assets/Assets";
 import { useState } from "react";
 import ChildComponent from "./ChildComponent";
@@ -1179,4 +1179,28 @@ let App=()=>{
     </div>
   )
 }
+export default App;
+*/
+
+// !=========Context api============
+
+import { createContext } from "react";
+import ChildComponentA from "./ChildComponentA";
+import assestsData from "./assets/Assets";
+
+// ?Step 1:
+export let MyContext = createContext();
+
+const App = () => {
+  let data = assestsData.fakeStoreTask.products;
+  return (
+    <div>
+      I am app component
+      {/* {Step 2 } */}
+      <MyContext.Provider value={data}>
+        <ChildComponentA />
+      </MyContext.Provider>
+    </div>
+  );
+};
 export default App;
