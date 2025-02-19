@@ -1206,7 +1206,9 @@ const App = () => {
 };
 export default App;
 */
+// ?===============Context Api task====================
 
+/*
 import React from "react";
 import QspiderComponent from "./ContextApi_task/QspiderComponent";
 let App = () => {
@@ -1219,3 +1221,42 @@ let App = () => {
 };
 
 export default App;
+*/
+
+// ! ====================== HOC =================
+import React from "react";
+import ChildComponentA from "./ChildComponentA";
+import ChildComponentB from "./ChildComponentB";
+
+const App = () => {
+  console.log("App Component");
+
+  return (
+    <>
+      <h1>I am App Component</h1>
+      <ChildComponentA id="A101" />
+      <ChildComponentB id="B202" />
+    </>
+  );
+};
+
+export default App;
+
+// ?=================Counter Task using HOC=====================
+/*
+import React from "react";
+import ChildComponentA from "./ChildComponentA";
+import ChildComponentB from "./ChildComponentB";
+
+const App = () => {
+  return (
+    <div>
+      <h1>I am App Component</h1>
+      <ChildComponentA />
+      <ChildComponentB />
+    </div>
+  );
+};
+
+export default App;
+*/
