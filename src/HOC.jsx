@@ -1,4 +1,5 @@
 // ! =================== HOC =======================
+/*
 import React from "react";
 
 const HOC = (ComponentName) => {
@@ -12,6 +13,7 @@ const HOC = (ComponentName) => {
 };
 
 export default HOC;
+*/
 
 // ?===================Counter Task using HOC=================
 /*

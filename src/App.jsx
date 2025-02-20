@@ -1189,7 +1189,7 @@ import { createContext } from "react";
 import ChildComponentA from "./ChildComponentA";
 import assestsData from "./assets/Assets";
 
-// ?Step 1:
+ ?Step 1:
 export let MyContext = createContext();
 
 const App = () => {
@@ -1224,6 +1224,7 @@ export default App;
 */
 
 // ! ====================== HOC =================
+/*
 import React from "react";
 import ChildComponentA from "./ChildComponentA";
 import ChildComponentB from "./ChildComponentB";
@@ -1241,6 +1242,7 @@ const App = () => {
 };
 
 export default App;
+*/
 
 // ?=================Counter Task using HOC=====================
 /*
@@ -1260,3 +1262,257 @@ const App = () => {
 
 export default App;
 */
+
+// !====================Conditional Rendering============
+/*
+1. If ,if-else,else-if,switch
+2.Ternary operator
+3.Short circuit operator(Logical AND) 
+  Syntax :condition && dataToDisplay
+*/
+// ?=================Using if-else=========================
+//1. if-else statement we should not use inside return statement
+/*
+import React from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [counter, setCounter] = useState(0);
+  console.log(counter);
+
+  if (counter % 2 === 0) {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Even number</h2>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Odd number</h2>
+      </>
+    );
+  }
+};
+
+export default App;
+*/
+// ?=================Using else-if=========================
+/*
+import React from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [counter, setCounter] = useState(0);
+  console.log(counter);
+
+  if (counter % 2 === 0) {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Number is divisble by 2</h2>
+      </>
+    );
+  } else if (counter % 3 === 0) {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Number is divisble by 3</h2>
+      </>
+    );
+  } else if (counter % 5 === 0) {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Number is divisble by 5</h2>
+      </>
+    );
+  } else if (counter % 7 === 0) {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Number is divisble by 7 </h2>
+      </>
+    );
+  } else {
+    return (
+      <>
+        <h1>I am App component</h1>
+        <h2>Counter -: {counter}</h2>
+        <button onClick={() => setCounter(counter + 1)}>Update</button>
+        <h2>Status :Number is divisble by 1</h2>
+      </>
+    );
+  }
+};
+export default App;
+*/
+
+// ?================== Using ternary=================
+/*
+import React from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [counter, setCounter] = useState(0);
+  console.log(counter);
+  return (
+    <>
+      <h1>I am App component</h1>
+      <h2>Counter -: {counter}</h2>
+      <button onClick={() => setCounter(counter + 1)}>Update</button>
+      <h2>Status :{counter % 2 == 0 ? "Even" : "Odd"} number</h2>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ?================== Using circuit operato=================
+/*
+import React from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [counter, setCounter] = useState(0);
+  console.log(counter);
+  return (
+    <>
+      <h1>I am App component</h1>
+      <h2>Counter -: {counter}</h2>
+      <button onClick={() => setCounter(counter + 1)}>Update</button>
+      <h2>Status :{counter%2===0?"even":"odd" } number</h2>
+    </>
+  );
+};
+
+export default App;
+*/
+// ? =========== Logical AND Operator =========
+/*
+import React, { useState } from "react";
+
+const App = () => {
+  let [status, setStatus] = useState(true);
+
+  return (
+    <>
+      <h1>I am App Component</h1>
+
+      <button onClick={() => setStatus(true)}>Placed</button>
+      <button onClick={() => setStatus(false)}>Not Placed</button>
+      <h2>Status: {status ? "Placed" : "Not Placed"} </h2>
+      <h2>Status : {status && "Placed"}</h2>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ^===============Conditional Rendering=============
+// ?Example 1
+/*
+import React from 'react'
+
+const App = () => {
+  let students=[
+    {sname:"Ekansh" ,isplaced:false},
+    {sname:"ram" ,isplaced:true},
+    {sname:"shyam" ,isplaced:true},
+    {sname:"mihir" ,isplaced:false},
+    {sname:"prabal" ,isplaced:true},
+    {sname:"sumit" ,isplaced:true},
+    {sname:"kanishka" ,isplaced:false},
+  ];
+  
+  return (
+    <>
+    <h1>Students Details :</h1>
+    {students.map((val,ind)=>{
+      console.log(val,ind);
+      
+      return(
+        <p>
+          {val.sname} {val.isplaced?"✅":"❌"}
+        </p>
+      )
+    })}
+    </>
+  )
+}
+
+export default App
+*/
+
+// ?Example 2
+/*
+import React from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [toggle, setToggle] = useState(false);
+  return (
+    <>
+      <h1>Indian Got Latent</h1>
+      <article>
+        {toggle ? (
+          <i class="fa-solid fa-toggle-on" onClick={() => setToggle(false)}></i>
+        ) : (
+          <i class="fa-solid fa-toggle-off" onClick={() => setToggle(true)}></i>
+        )}
+      </article>
+        <br></br>
+
+      <aside>
+        <h4>
+          <i class="fa-solid fa-house"></i>
+          {toggle && <span className="m-8">Home</span>}
+        </h4>
+        <br></br>
+        <h4>
+          <i class="fa-solid fa-address-book"></i>
+          {toggle && <span>Contact</span>}
+        </h4>
+        <br></br>
+        <h4>
+        <i class="fa-solid fa-cart-shopping"></i>
+        {toggle&&<span>Cart</span>}
+        </h4>
+        <br></br>
+      </aside>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// !============Gemini Clone==============
+
+import React from "react";
+import Gemini from "./Gemini_task/gemini";
+const App = () => {
+  return (
+    <>
+      <Gemini />
+    </>
+  );
+};
+
+export default App;

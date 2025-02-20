@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fff;
+}
+
+.sideBar {
+  background-color: #f0f4f9;
+  color: #989cad;
+  display: flex;
+  cursor: pointer;
+  flex-direction: column;
+  padding: 1rem;
+  height: 46rem;
+}
+.sideBar div {
+  background-color: #f0f4f9;
+}
+.sideBar div i {
+  color: black;
+  margin-left: 0.5rem;
+  background-color: #f0f4f9;
+}
+.sideBar div span {
+  color: black;
+  background-color: #f0f4f9;
+  margin-left: 0.5rem;
+}
+#Container {
+  display: flex;
+}
+.btn {
+  background-color: #e5eaf1;
+  border: 1px solid #e5eaf1;
+  color: #989cad;
+  border-radius: 1rem;
+  height: 2.5rem;
+  margin-top: 5rem;
+}
+.btn i {
+  color: #989cad;
+  padding: 10px;
+  border-radius: 50%;
+  background-color: #e5eaf1;
+}
+.btn span {
+  color: #989cad;
+  background-color: #e5eaf1;
+}
+#mainBar {
+  display: flex;
+  align-items: center;
+}
+#mainBar h2 {
+  color: black;
+}
+.sideBarDown {
+  margin-top: 21rem;
+}
+.sideBarDown div {
+  margin-top: 1rem;
+}
+
+.sideBarDown div span {
+  font-size: 0.9rem;
+}
+.sideBarDown div p {
+  color: blue;
+  font-size: 10px;
+  margin-left: 18px;
+  font-weight: 500;
+  background-color: #f0f4f9;
+}

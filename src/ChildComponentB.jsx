@@ -29,6 +29,7 @@ const ChildComponentB = () => {
 export default ChildComponentB;
 */
 // ! =================== HOC =======================
+/*
 import React from "react";
 import HOC from "./HOC";
 
@@ -48,7 +49,7 @@ const ChildComponentB = (props) => {
 };
 
 export default HOC(ChildComponentB);
-
+*/
 //? ===============Counter Task using HO==================
 /*
 import React from "react";
