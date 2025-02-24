@@ -7,7 +7,7 @@ const gemini = () => {
     <div id={style.Container}>
       <div className={style.sideBar}>
         <div>
-          <i className="fa-solid fa-bars" onClick={() => setToggle(!toggle)}></i>
+          <i className="fa-solid fa-bars " onClick={() => setToggle(!toggle)}></i>
         </div>
         <button className={style.btn}>
           <i className="fa-solid fa-plus "></i>
@@ -19,7 +19,7 @@ const gemini = () => {
             {toggle && <span>Gem Manager</span>}
           </div>
           <div>
-            <i className="fa-solid fa-question"></i>
+            <i className="fa-solid fa-question border"></i>
             {toggle && <span>Help</span>}
           </div>
           <div>
@@ -39,7 +39,7 @@ const gemini = () => {
         </div>
       </div>
       <div id={style.mainBar}>
-        <h2>Gemini</h2>
+        <h2 className="border ml-10">Gemini</h2>
       </div>
     </div>
   );

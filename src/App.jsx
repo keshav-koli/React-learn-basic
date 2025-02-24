@@ -1504,7 +1504,7 @@ export default App;
 */
 
 // !============Gemini Clone==============
-
+/*
 import React from "react";
 import Gemini from "./Gemini_task/gemini";
 const App = () => {
@@ -1512,6 +1512,311 @@ const App = () => {
     <>
       <Gemini />
     </>
+  );
+};
+
+export default App;
+*/
+
+// ! ========================= Forms in React JS ===============
+// ! ===================== UnControlled Forms =====================
+// ? ============ useRef() Hook ==============
+/*
+To get the reference of an element we have to use useRef() Hook.
+For reference of an element we have to use useRef() Hook.
+    1. import useRef()
+    2. store in a variable
+    3. to pass reference we have to use "ref prop" and assgin the variable name.
+
+Reference variable should be assigned to only one element.
+If we repeat the variable name for multiple elements , it wil target the most updated element.
+*/
+
+// ? Example 1:
+/*
+import React from "react";
+import { useRef } from "react";
+
+const App = () => {
+  let nameRef = useRef();
+  // console.log(nameRef);
+
+  let emailRef = useRef();
+  let mobileRef = useRef();
+  let handleSubmit = (e) => {
+    e.preventDefault();
+
+    // console.log(nameRef);
+    // console.log(nameRef.current);
+    // console.log(nameRef.current.value);
+
+    // console.log(nameRef.current.value);
+    // console.log(emailRef.current.value);
+    // console.log(mobileRef.current.value);
+    console.log({
+      userName: nameRef.current.value,
+      userEmail: emailRef.current.value,
+      userNo: mobileRef.current.value,
+    });
+  };
+
+  return (
+    <div>
+      <h1>Form</h1>
+      <form onSubmit={handleSubmit}>
+        <label>Name :</label>
+        <input type="text" ref={nameRef} /> <br /> <br />
+        <label>Email :</label>
+        <input type="text" ref={emailRef} /> <br /> <br />
+        <label>Mobile :</label>
+        <input type="text" ref={mobileRef} /> <br /> <br />
+        <button>Submit</button>
+      </form>
+    </div>
+  );
+};
+
+export default App;
+*/
+
+// ?Example 2
+// Sum of 3 numbers
+/*
+import React from "react";
+import { useState } from "react";
+import { useRef } from "react";
+
+const App = () => {
+  let [result, setResult] = useState("");
+
+  let number1 = useRef();
+  let number2 = useRef();
+  let number3 = useRef();
+
+  console.log(number1);
+  console.log(number2);
+  console.log(number3);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(number1.current.value);
+    console.log(typeof number1.current.value);
+    console.log(number2.current.value);
+    console.log(number3.current.value);
+
+    console.log(Number(number1.current.value));
+    console.log(number1.current.value * 1);
+    console.log(+number1.current.value);
+    console.log(typeof Number(number1.current.value));
+
+    setResult(
+      Number(number1.current.value) +
+        Number(number2.current.value) +
+        Number(number3.current.value)
+    );
+    //  +number1.current.value + +number2.current.value + +number3.current.value;
+    //  number1.current.value*1 + number2.current.value*1 + number3.current.value*1;
+  };
+
+  return (
+    <div>
+      <h1>Addition Form</h1>
+      <form onSubmit={handleSubmit}>
+        <p>
+          <label>Number 1 : </label>
+          <input type="tel" ref={number1} />
+        </p>
+        <p>
+          <label>Number 2 : </label>
+          <input type="tel" ref={number2} />
+        </p>
+
+        <p>
+          <label>Number 3 : </label>
+          <input type="tel" ref={number3} />
+        </p>
+
+        <p>
+          <button>submit</button>
+        </p>
+      </form>
+      {result && <h2>Output is : {result}</h2>}
+    </div>
+  );
+};
+
+export default App;
+*/
+
+// ! ===================== Controlled Forms =====================
+/*
+    1. useState( ) Hook
+    2. value prop
+    3. readOnly / onChange Event
+
+Note: 
+  You provided a `value` prop to a form field without an `onChange` handler.
+  This will render a read-only field. 
+*/
+/*
+
+?Example 2
+import React, { useState } from "react";
+
+const App = () => {
+  let [name, setName] = useState("Amit");
+  let [email, setEmail] = useState("");
+  let [mobile, setMobile] = useState("");
+
+  return (
+    <>
+      <h1>Registration Form</h1>
+      <form action="">
+        <p>
+          <label>Name : </label>
+          <input
+            type="text"
+            value={name}
+            onChange={e => {
+              // console.log("I am changing...");
+              // console.log(e);
+              // console.log(e.target);
+              console.log(e.target.value);
+              setName(e.target.value);
+            }}
+          />
+        </p>
+        <p>
+          <label>Email : </label>
+          <input type="text" value={email}  onChange={e => {
+              setEmail(e.target.value);
+            }} />
+        </p>
+        <p>
+          <label>Mobile No : </label>
+          <input type="text" value={mobile}
+            onChange={e => setMobile(e.target.value)} />
+        </p>
+        <p>
+          <button>submit</button>
+        </p>
+      </form>
+    </>
+  );
+};
+export default App;
+*/
+
+// ? Example 2
+/*
+import React, { useState } from "react";
+
+const App = () => {
+  let [number1,setNumber1]=useState("");
+  let [number2,setNumber2]=useState("");
+  let [number3,setNumber3]=useState("");
+  let [result,setResult]=useState("");
+
+  let handleSubmit=(e)=>{
+    e.preventDefault();
+    let sum=+number1+ +number2+ +number3;
+    setResult(sum)
+  }
+  return (
+  <div>
+    <h1>Addition of 3 numbers</h1>
+    <form onSubmit={handleSubmit}>
+      <p>
+        <label>Number 1 :</label>
+        <input type="text" value={number1} onChange={e=>{setNumber1(e.target.value)}}></input>
+      </p>
+      <p>
+        <label>Number 2 :</label>
+        <input type="text" value={number2} onChange={e=>{setNumber2(e.target.value)}}></input>
+      </p>
+      <p>
+        <label>Number 3 :</label>
+        <input type="text" value={number3} onChange={e=>{setNumber3(e.target.value)}}></input>
+      </p>
+      <button>Submit</button>
+    </form>
+    {result&&<h1>Output :{result}</h1>}
+  </div>
+  );
+};
+
+export default App;
+*/
+// ?Exammple 3
+import React, { useState } from "react";
+
+const App = () => {
+  const [formData, setformData] = useState({
+    sname: "Keshav",
+    email: "k@gmail.com",
+    phone: "7854123690",
+  });
+  
+  /*const handleName = (e) => {
+    // console.log(e.target.value);
+    setformData({
+      ...formData,
+      sname: e.target.value,
+    });
+  };
+
+  const handleEmail = (e) => {
+    // console.log(e.target.value);
+    setformData({
+      ...formData,
+      email: e.target.value,
+    });
+  };
+
+  const handlePhone = (e) => {
+    // console.log(e.target.value);
+    setformData({
+      ...formData,
+      phone: e.target.value,
+    });
+  };
+  */
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    console.log(formData);
+  };
+
+  const handleChange=(e)=>{
+    setformData({
+      ...formData,
+      [e.target.name]:e.target.value
+    })
+  }
+
+
+  return (
+    <div>
+      <form onSubmit={handleSubmit}>
+        <h1>My form</h1>
+        <p>
+          <label>Name :</label>
+          <input type="text" value={formData.sname} onChange={handleChange} name="sname"></input>
+        </p>
+        <p>
+          <label>Email : </label>
+          <input type="text" value={formData.email} onChange={handleChange} name="email" />
+        </p>
+        <p>
+          <label>Mobile No : </label>
+          <input type="text" value={formData.phone} onChange={handleChange} name="phone" />
+        </p>
+        <p>
+          <button>submit</button>
+        </p>
+      </form>
+    </div>
   );
 };
 
