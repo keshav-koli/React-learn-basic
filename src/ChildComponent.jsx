@@ -265,6 +265,7 @@ export default Product;
 */
 
 // !=============Fetch API task===================
+/*
 import React from "react";
 import style from "../fakeStoreTask.module.css";
 const ChildComponent = ({ product }) => {
@@ -294,3 +295,31 @@ const ChildComponent = ({ product }) => {
 };
 
 export default ChildComponent;
+*/
+
+
+
+// !==================Unmounting Phase===============================
+import React, { Component } from 'react'
+
+export default class ChildComponent extends Component {
+  constructor(){
+    super();
+    console.log("ChildComponent Constructor");
+  }
+
+  componentWillUnmount(){
+    console.log("ChildComponent componentWillUnmount");
+  }
+
+
+
+  render() {
+    console.log("I am render method of ChildComponent");
+    return (
+      <div>
+        <h2>I am ChildComponent</h2>
+      </div>
+    )
+  }
+}

@@ -2039,7 +2039,7 @@ export default App;
     
 
 */
-
+/*
 import React, { Component } from "react";
 
 class App extends Component {
@@ -2083,6 +2083,170 @@ class App extends Component {
           {" "}
           Update
         </button>
+      </div>
+    );
+  }
+}
+
+export default App;
+*/
+
+// !========================Updating Phase===============================
+
+/*
+whenever there some changes in component , react will re-render the component and this phase is called updating phase.
+
+changes in props .state.
+
+? 1. getDerivedStateFromProps()
+    a. It method is as same in Mounting phase.
+    b. It will execute just before the render() method.
+    c. It will return the new object as state data.
+    d. It accepts prevProps, prevState as a parameters.
+    e. It will provide the static state data.
+
+? 2. shouldComponentUpdate()
+    This method helps us to improve the performance of the application.
+    It will commpare the previous props/state and current props/state.    
+    It will return a boolean value.
+    if true , render() method will execute.
+    if false, render() method will not execute.
+    By default it will return true.
+
+    Called to determine whether the change in props and state should trigger a re-render.
+    Compoent always returns true.
+    PureComponent implements a shallow comparison on props and state and returns true if any props or state have changed.
+    If false is returned, component.render ,componentDidUpdate will not be invoked.
+
+? 3. render()
+    a. It is the only mandatory method in CBC's,
+    b. It will execute for each and every updates.
+    c. render() method allows us to write JSX(html + js);
+    d. It is not the best place to do side effects
+        ex: fetch , timers, window properties, etc.
+
+? 4. getSnapshotBeforeUpdate()
+    a. getSnapshotBeforeUpdate() method will execute just before the DOM is updated.
+    b. It will return the snapshot value.
+    c. It accepts prevProps, prevState as a parameters.
+    d. It will provide the snapshot value.
+
+? 5. componentDidUpdate()
+    a. componentDidUpdate() method will execute after the DOM is updated.
+    b. It will accept prevProps, prevState, snapshot as a parameters.
+    c. It is the best place to perform side effects.
+    d. It is the best place to make network requests.
+    e. It is the best place to update the DOM in response to prop/state changes.
+    f. It is the best place to update the state data.
+
+
+*/
+/*
+import React, { Component } from "react";
+
+class App extends Component {
+  constructor(props) {
+    console.log("I am connstructor ( ) method");
+
+    super(props);
+
+    this.state = { counter: 0 };
+    // console.log(this.state);
+  }
+
+
+  static getDerivedStateFromProps(prevProps, prevState) {
+    console.log("I am getDerivedStateFromProps () methods");
+    return null;
+  }
+
+  shouldComponentUpdate(prevProps, prevState) {
+    console.log("I am shouldComponentUpdate() Method");
+    console.log(prevProps, prevState);
+    //if previous states/props == current states/props
+    // return false;
+
+    //if previous states/props != current states/props
+    // return true;
+
+    return true;
+  }
+
+  getSnapshotBeforeUpdate(prevProps, prevState) {
+    console.log("I am getSnapshotBeforeUpdate() Method");
+    console.log(prevProps, prevState);
+    return prevState;
+  }
+
+  componentDidUpdate(prevProps, prevState, snapshot) {
+    console.log("I am componentDidUpdate() Method");
+    console.log("My Snap data is ", snapshot);
+  }
+
+  componentDidMount() {
+    console.log("I am componentDidMount() Method");
+    let getData = async () => {
+      let res = await fetch("https://fakestoreapi.com/products");
+      let data = await res.json();
+      // console.log(data);
+    };
+
+    getData();
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>I am App Component</h1>
+        <h2>Counter : {this.state.counter}</h2>
+        <button
+          onClick={() => this.setState({ counter: this.state.counter + 1 })}
+        >
+          {" "}
+          Update
+        </button>
+      </div>
+    );
+  }
+}
+
+export default App;
+*/
+
+// !====================Unmounting Phase=======================
+/*
+  Whenever a component is removed from the DOM is called Unmounting Phase.
+  ? 1. componentWillUnmount()
+    a. componentWillUnmount() method will execute just before the component is removed from the DOM.
+    b. It is the best place to perform clean up operations.
+    c. It is the best place to cancel network requests.
+    d. It is the best place to clean up subscriptions.
+    e. It is the best place to clean up timers.
+    f. It is the best place to clean up any side effects.
+
+*/
+
+import React, { Component } from "react";
+import ChildComponent from "./ChildComponent";
+class App extends Component {
+  constructor(props) {
+    console.log("I am connstructor ( ) method");
+
+    super(props);
+
+    this.state = { counter: 0, isDisplay: true };
+  }
+
+  render() {
+    return (
+      <div>
+        <h1>I am App Component</h1>
+        <button
+          onClick={() => {
+            this.setState({ isDisplay: !this.state.isDisplay });
+          }}
+        >toggle</button>
+        {this.state.isDisplay && <ChildComponent />}
       </div>
     );
   }
