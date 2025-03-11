@@ -2126,6 +2126,11 @@ changes in props .state.
         ex: fetch , timers, window properties, etc.
 
 ? 4. getSnapshotBeforeUpdate()
+    This method will start working just before the render() method.
+    Through out the render method it will observe the changes and it will send the changes to componentDidUpdate() method
+    getSnapshotBeforeUpdate() should be used with componentDidUpdate().
+    This component defines getSnapshotBeforeUpdate() only.
+    App.getSnapshotBeforeUpdate(): A snapshot value (or null) must be returned.   
     a. getSnapshotBeforeUpdate() method will execute just before the DOM is updated.
     b. It will return the snapshot value.
     c. It accepts prevProps, prevState as a parameters.
@@ -2225,7 +2230,7 @@ export default App;
     f. It is the best place to clean up any side effects.
 
 */
-
+/*
 import React, { Component } from "react";
 import ChildComponent from "./ChildComponent";
 class App extends Component {
@@ -2251,5 +2256,96 @@ class App extends Component {
     );
   }
 }
+
+export default App;
+*/
+
+// !====================UseEffect Hook=======================
+/*
+1. useEffect() is a hook in react which helps to perform side effects in functional components.
+2. useEffect() is an alternative to componentDidMount(),componentDidUpdate(),componentWillUnmount() in class based components.
+
+*/
+
+import React from "react";
+import { useEffect } from "react";
+import { useState } from "react";
+
+const App = () => {
+  let [counter1, setCounter1] = useState(0);
+  let [counter2, setCounter2] = useState(0);
+
+  // ? Case 1:
+  //useEffect hook without dependency array will work for every changes.
+  /*
+  useEffect(()=>{
+    console.log("I am useEffect() method case 1");
+    let getData=async()=>{
+      let res=await fetch("https://fakestoreapi.com/products");
+      let data=await res.json();
+      console.log(data);
+      }
+      getData();
+      })
+      */
+     
+     // ? Case 2:
+     //useEffect hook with dependency array will work for only once.
+     //It will act as componentDidMount() method
+     /*
+     useEffect(()=>{
+      console.log("I am useEffect() method case 1");
+      let getData=async()=>{
+        let res=await fetch("https://fakestoreapi.com/products");
+        let data=await res.json();
+    console.log(data);
+    }
+    getData();
+    },[])
+    */
+   
+   // ? Case 3:
+   //useEffect hook with dependency array
+   
+   useEffect(() => {
+     console.log("I am useEffect() method case 1");
+     let getData = async () => {
+       let res = await fetch("https://fakestoreapi.com/products");
+       let data = await res.json();
+       console.log(data);
+      };
+      getData();
+    },[counter1])
+
+    useEffect(() => {
+      console.log("I am useEffect() method case 1");
+      let getData = async () => {
+        let res = await fetch("https://fakestoreapi.com/products");
+        let data = await res.json();
+        console.log(data);
+       };
+       getData();
+     },[counter2])
+
+     useEffect(() => {
+      console.log("I am useEffect() method case 1");
+      let getData = async () => {
+        let res = await fetch("https://fakestoreapi.com/products");
+        let data = await res.json();
+        console.log(data);
+       };
+       getData();
+     },[counter1,counter2])
+    
+    return (
+    <div>
+      <h1>I am App Component</h1>
+      <h2>Counter1 - {counter1}</h2>
+      <h2>Counter2 - {counter2}</h2>
+      <button onClick={() => setCounter1(counter1 + 1)}>Increment</button>
+      <button onClick={() => setCounter2(counter2 + 1)}>Increment</button>
+    </div>
+  );
+};
 
 export default App;

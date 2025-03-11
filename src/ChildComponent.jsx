@@ -300,6 +300,7 @@ export default ChildComponent;
 
 
 // !==================Unmounting Phase===============================
+/*
 import React, { Component } from 'react'
 
 export default class ChildComponent extends Component {
@@ -323,3 +324,37 @@ export default class ChildComponent extends Component {
     )
   }
 }
+*/
+// ! ================= useEffect() Hook ==================
+import React, { useEffect, useState } from "react";
+
+const ChildComponent = () => {
+  let [myData, setData] = useState([]);
+
+  useEffect(() => {
+    console.log("I will work as componentDidMount method");
+    // here i will get the data
+
+    let getData = async () => {
+      console.log("I am fetching Data.....");
+      let res = await fetch("https://fakestoreapi.com/products");
+      let data = await res.json();
+      //  console.log(data);
+      setData(data);
+    };
+    getData();
+
+    // cleanUp function
+    return () => {
+      console.log("I will work as componentWillUnmount method");
+      // as component removed i will delete here.
+      setData([]);
+    };
+  }, []);
+
+  console.log(myData);
+
+  return <h1>ChildComponent</h1>;
+};
+
+export default ChildComponent;
