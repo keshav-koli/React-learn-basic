@@ -1,4 +1,4 @@
-@import "tailwindcss";
+/* @import "tailwindcss"; */
 /* * {
   margin: 0;
   padding: 0;
@@ -19,3 +19,25 @@
   background-color: gray;
   padding: 10px;
 } */
+#mainNavBar {
+  border: solid rgb(98, 168, 168);
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  gap: 1px;
+}
+
+#mainNavBar a {
+  flex: 1;
+  text-align: center;
+  text-decoration: none;
+  padding: 10px;
+  background-color: teal;
+  color: white;
+}
+
+#mainNavBar .active {
+  text-decoration: underline double red;
+  background-color: rgba(0, 128, 128, 0.577);
+}

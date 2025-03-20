@@ -2454,7 +2454,7 @@ portal allow us to display data on the UI and without rendering into root elemen
 Step 1 : create one root element in the main html file use id and target it,
 
 Step 2 : 
-        import ReactDOM from 'reactDOM/client'
+        import ReactDOM from 'reactDOM'
 
         ReactDOM.createPortal (content ,container);
         ex -: ReactDOM.createPortal(<h1>I am portal </h1>,document.getElementById("portal"));
@@ -2504,8 +2504,8 @@ const App = () => {
 export default App;
 */
 
-
-//? Case 2 
+//? Case 2
+/*
 import React, { useState } from 'react'
 import NonPortalComponent from './portal/NonPortalComponent';
 import PortalComponent from './portal/PortalComponent';
@@ -2532,3 +2532,165 @@ const App = () => {
 }
 
 export default App
+*/
+
+// !==========================================================
+/*
+import React from "react";
+import PureParent from "./PureComponent/PureParent";
+
+const App = () => {
+  return (
+    <>
+      <PureParent />
+    </>
+  );
+};
+
+export default App;
+*/
+// ! ========== useCallback() ==============
+/*
+It will helps us to add additional features to React.memo 
+? When to use:
+  whenever we are passing functions as props we have to use it.
+
+? How to use: 
+  Syntax: useCallback( function, [dependencies])
+
+? Working:
+1. It will stop the recreation of functions unless the dependency changed.
+2. as there is not recreation of function, function  reference will not change, as function reference not changed it props are not changed, as props not changed it will not re-render the component.
+*/
+/*
+import React, { useCallback, useState } from "react";
+import TitleComponent from "./TitleComponent";
+import CounterComponent from "./CounterComponent";
+import ButtonComponent from "./ButtonComponent";
+
+const App = () => {
+  let [age, setAge] = useState(20);
+  let [salary, setSalary] = useState(50000);
+
+  let handleAge = useCallback(() => {
+    setAge(age + 1);
+  }, [age]);
+
+  let handleSalary = useCallback(() => {
+    setSalary(salary + 10000);
+  }, [salary]);
+
+  return (
+    <center>
+      <TitleComponent>useCallback() Hook</TitleComponent>
+
+      <CounterComponent data={age}>Age</CounterComponent>
+      <ButtonComponent fn={handleAge}>Update Age</ButtonComponent>
+
+      <CounterComponent data={salary}>Salary</CounterComponent>
+      <ButtonComponent fn={handleSalary}>Update Salary</ButtonComponent>
+    </center>
+  );
+};
+
+export default App;
+*/
+
+// ! ============== useMemo() Hook ==========
+/*
+  To handle heavy functions in React Component we have to use useMemo() Hook.
+*/
+/*
+import React, { useMemo, useState } from "react";
+
+const App = () => {
+  let [counter1, setCounter1] = useState(0);
+  let [counter2, setCounter2] = useState(0);
+
+  // ? Syntax: useMemo(callback , [dependency]);
+  let isEven = useMemo(() => {
+    console.log("isEven() is working");
+
+    let sum = 0;
+    for (let i = 0; i <= 300000000; i++) {
+      sum += i;
+    }
+    console.log(sum);
+
+    // if (counter1 % 2 === 0) {
+    //   return true;
+    // }
+    // return false;
+
+    return counter1 % 2 === 0;
+  }, [counter1]);
+
+  return (
+    <>
+      <h1>I am App Component</h1>
+      <h2>Counter 1 : {counter1}</h2>
+      <button onClick={() => setCounter1(counter1 + 1)}>Update Counter1</button>
+
+      {isEven ? "Even" : "Odd"}
+
+      <h2>Counter 2 : {counter2}</h2>
+      <button onClick={() => setCounter2(counter2 + 1)}>Update Counter2</button>
+    </>
+  );
+};
+
+export default App;
+*/
+
+// ! ================= React- Routing (version 5) =================
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import { Routes } from "react-router-dom";
+import { Route } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
+import Home from "./pages/Home";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
+import Login from "./pages/Login";
+import Company from "./pages/aboutPages/Company";
+import Employes from "./pages/aboutPages/Employes";
+import Users from "./pages/aboutPages/Users";
+import ContactHr from "./pages/contactPages/ContactHr";
+import ContactTrainer from "./pages/contactPages/ContactTrainer";
+import ContactCounsellors from "./pages/contactPages/ContactCounsellors";
+import LoginUser from "./pages/loginPages/LoginUser";
+import LoginAdmin from "./pages/loginPages/LoginAdmin";
+import Dashboard from "./pages/Dashboard";
+import HandleError from "./pages/HandleError";
+
+const App = () => {
+  return (
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Dashboard />}>
+            <Route path="/home" element={<Home />} />
+            <Route path="/about" element={<About />}>
+              <Route path="company" element={<Company />} />
+              <Route path="employee" element={<Employes />} />
+              <Route path="users" element={<Users />} />
+            </Route>
+            <Route path="/contact" element={<Contact />}>
+              <Route path="hrs" element={<ContactHr />} />
+              <Route path="trainers" element={<ContactTrainer />} />
+              <Route path="counsellors" element={<ContactCounsellors />} />
+            </Route>
+            <Route path="/login" element={<Login />}>
+              <Route path="loginUser" element={<LoginUser />} />
+              <Route path="loginAdmin" element={<LoginAdmin />} />
+            </Route>
+          </Route>
+            <Route path="*" element={<HandleError />} />
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};
+
+export default App;
